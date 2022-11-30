@@ -1,0 +1,26 @@
+<div class="container mt-5 box-shadow p-3 mb-5">
+  <center><h4>Blog Post Details</h4></center>
+  <table class="table">
+    <tr>
+      <th width="200">Title</th>
+      <td><%= @blog_post.title %></td>
+    </tr>
+    <tr>
+      <th width="200">Blog Category</th>
+      <td><%= @blog_post&.blog_category&.name %></td>
+    </tr>
+    <tr>
+      <th width="200">Creation Data</th>
+      <td><%= @blog_post.creation_date&.strftime("%e-%b-%Y") %></td>
+    </tr>
+    <tr>
+      <th width="200">Visibility State</th>
+      <td><%= @blog_post.visibility_state %></td>
+    </tr>
+    <tr>
+      <th width="200">Content</th>
+      <td><%= @blog_post.content %></td>
+    </tr>
+  </table>
+  <%= link_to 'Back', admin_root_path, class: 'btn btn-primary' %>
+</div>

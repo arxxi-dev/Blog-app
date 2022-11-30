@@ -1,0 +1,32 @@
+<div class="container mt-5 box-shadow p-3 mb-5">
+  <div class="col-sm-12">
+    <div class="row">
+      <div class="col-sm-8 ml-auto mr-auto">
+        <%= link_to 'Back', admin_root_path, class: 'btn btn-primary float-right' %>
+        <h2><strong>All Categories</strong></h2>
+        <hr>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @blog_categories.each do |category| %>
+              <tr>
+                <td><%= category.id %></td>
+                <td><%= category.name %></td>
+                <td>
+                  <%= link_to 'Edit', edit_admin_blog_category_path(category), class: 'btn btn-primary btn-sm' %>
+                  <%= link_to 'Delete', admin_blog_category_path(category), class: 'btn btn-danger btn-sm ml-1', method: :delete, data: {confirm: 'Aru you Sure ?'} %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

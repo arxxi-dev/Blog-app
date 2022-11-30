@@ -1,0 +1,22 @@
+<% if @blog_categories.present? %>
+  <% @blog_categories.each do |category| %>
+    <% if category.blog_posts.present? %>
+      <div class="container box-shadow mt-5 mb-5 p-2">
+        <h4 class="show-post-heading"><%= "Category : #{category.name}" %></h4>
+        <% category_blog_posts(category.blog_posts).each do |post| %>
+          <div class="container mt-5">
+            <div class="row color">
+              <strong><h5><%= "Post About #{post.title}"%></h5></strong>
+            </div>
+            <div class="row">
+              <%= post.content.truncate(500) %>
+              <%= link_to 'Read more>>', visitor_path(post), class: 'color ml-auto mr-auto' %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+<% else %>
+  <p>No Post is Present</p>
+<% end %>

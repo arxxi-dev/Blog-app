@@ -1,0 +1,42 @@
+<div class="container box-shadow mt-5 mb-5 p-5">
+  <center><h1 class="main-heading">XYZ Blogs</h1></center>
+  <hr class="home-hr">
+  <div class="menu-margin home-button">
+    <%= link_to 'Home', root_path %>
+    <span>|</span>
+    <%= link_to 'Posts', posts_visitors_path %>
+  </div>
+  <div class="col-sm-12">
+    <div class="row">
+      <div class="col-sm-8 mt-5">
+        <h2><strong>Recent Posts</strong></h2>
+        <hr>
+        <% if @recent_posts.present? %>
+          <% @recent_posts.each do |post| %>
+            <div class="container mt-5">
+              <div class="row color">
+                <strong><h5><%= "Post About #{post.title}"%></h5></strong>
+              </div>
+              <div class="row">
+                <%= post.content.truncate(500) %>
+                <%= link_to 'Read more>>', visitor_path(post), class: 'color ml-auto mr-auto' %>
+              </div>
+            </div>
+          <% end %>
+        <% else %>
+          <p>No Post is Present</p>
+        <% end %>
+      </div>
+      <div class="col-sm-4 mt-5">
+        <%= form_tag search_post_visitors_path, method: :get do %>
+          <div class="input-group">
+            <%= text_field_tag 'post_name',nil, class: 'form-control', placeholder: 'Search Post by Name' %>
+            <div class="input-group-append">
+              <%= submit_tag "Search", class: 'btn btn-outline-primary' %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

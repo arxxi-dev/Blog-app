@@ -1,0 +1,30 @@
+<div class="mt-4 comment-area">
+  <% @post_comments.each do |comment| %>
+    <div class="row mt-1 ml-2">
+      <p>
+        <span class="mr-1"><%= comment.name.presence || 'No Name' %>:</span><%= comment.comment %>
+      </p>
+    </div>
+  <% end %>
+</div>
+<div class="mt-5 mb-2">
+  <%= form_for Comment.new,url: comment_visitors_path(id: @blog_post), remote: true do |f| %>
+    <div class="col-sm-12">
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="input-group-sm">
+            <%= f.text_field :name, class: 'form-control', placeholder: 'Enter Your Name' %>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="input-group-sm">
+            <%= f.text_field :comment, class: 'form-control', placeholder: 'Enter Your Comment Here' %>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <%= f.submit "Post Comment", class: 'btn btn-primary btn-sm' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

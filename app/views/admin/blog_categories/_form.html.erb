@@ -1,0 +1,12 @@
+<%= form_for [:admin, @blog_category] do |f| %>
+  <div class="form-group">
+    <div class="col-sm-12">
+      <%= f.label :name, class: 'show' %>
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="col-sm-12">
+    <%= f.submit "Submit", class: 'btn btn-primary btn-sm' %>
+    <%= link_to 'Back', admin_root_path, class: 'btn btn-danger btn-sm' %>
+  </div>
+<% end %>

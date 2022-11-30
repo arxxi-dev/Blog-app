@@ -1,0 +1,36 @@
+<%= form_for [:admin, @blog_post] do |f| %>
+  <div class="form-group">
+    <div class="col-sm-12">
+      <%= f.label :Title, class: 'show' %>
+      <%= f.text_field :title, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-12">
+      <%= f.label :Category, class: 'show' %>
+      <%= f.select :blog_category_id,options_for_select(@blog_categories.map{|k| [k.name, k.id]}, @blog_post.blog_category&.id), {include_blank: 'Select Category'}, {class: 'form-control'} %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-12">
+      <%= f.label :Creation_date, class: 'show' %>
+      <%= f.date_field :creation_date, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-12">
+      <%= f.label :Visibility_state, class: 'show' %>
+      <%= f.select :visibility_state,options_for_select(BlogPost.visibility_states.map{|k,v| [k, k]}, @blog_post.visibility_state), {include_blank: 'Select Visibility State'}, {class: 'form-control'} %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-12">
+      <%= f.label :Content, class: 'show' %>
+      <%= f.text_area :content, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="col-sm-12">
+    <%= f.submit "Submit", class: 'btn btn-primary btn-sm' %>
+    <%= link_to 'Back', admin_root_path, class: 'btn btn-danger btn-sm' %>
+  </div>
+<% end %>

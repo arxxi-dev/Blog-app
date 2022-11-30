@@ -1,0 +1,15 @@
+<div class="container box-shadow mt-5 mb-5 p-2">
+  <h2 class="show-post-heading"><%= @blog_post.title %></h2>
+  <p class="created">
+    <%= "Created : #{@blog_post.creation_date&.strftime("%e-%b-%Y")}" %>
+  </p>
+  <p>
+    <b>Category :</b> <%= @blog_post.blog_category&.name%>
+  </p>
+  <p class="ml-1 mr-1"><%= @blog_post.content %></p>
+  <h4 class="mt-4 show-post-heading">Comments</h4>
+
+  <div id="comments">
+    <%= render 'comments' %>
+  </div>
+</div>

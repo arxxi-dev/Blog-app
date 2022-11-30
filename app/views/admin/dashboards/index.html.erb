@@ -1,0 +1,33 @@
+<div class="container mt-5 box-shadow p-3 mb-5">
+  <div class="col-sm-12">
+    <div class="row">
+      <div class="col-sm-8">
+        <h2><strong>Recent Posts</strong></h2>
+        <hr>
+        <% @recent_posts.each do |post| %>
+          <div class="container mt-5">
+            <div class="row color">
+              <strong><h5><%= "Post About #{post.title}"%></h5></strong>
+              <div class="ml-auto mr-auto">
+                <%= link_to 'Edit', edit_admin_blog_post_path(post), class: 'mr-1' %> |
+                <%= link_to 'Delete', admin_blog_post_path(post), method: :delete, data: {confirm: 'Are you Sure'}, class: 'ml-1' %>
+              </div>
+            </div>
+            <div class="row">
+              <%= post.content.truncate(500) %>
+              <%= link_to 'Read more>>', admin_blog_post_path(post), class: 'color ml-auto mr-auto' %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="col-sm-4 mt-5">
+        <div class="box-shadow-inside text-center mt-3">
+          <%= link_to 'Create New Post', new_admin_blog_post_path, class: 'btn btn-primary mt-3 btn-sm set-width' %><br>
+          <%= link_to 'Create New Category', new_admin_blog_category_path, class: 'btn btn-primary mt-1 btn-sm set-width' %><br>
+          <%= link_to 'Show All Categories', admin_blog_categories_path, class: 'btn btn-primary mt-1 btn-sm set-width' %><br>
+          <%= link_to 'Old Post List', admin_blog_posts_path, class: 'btn btn-primary mt-1 mb-3 btn-sm set-width' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

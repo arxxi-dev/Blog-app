@@ -1,0 +1,18 @@
+<div class="container box-shadow mt-5 mb-5 p-5">
+  <h5 class="text-center search-result"><u>Search Results</u></h5>
+  <% if @searched_posts.present? %>
+    <% @searched_posts.each do |post| %>
+      <div class="container mt-5">
+        <div class="row color">
+          <strong><h5><%= "Post About #{post.title}"%></h5></strong>
+        </div>
+        <div class="row">
+          <%= post.content.truncate(500) %>
+          <%= link_to 'Read more>>', visitor_path(post), class: 'color ml-auto mr-auto' %>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <p>No Result Found</p>
+  <% end %>
+</div>
